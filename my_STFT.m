@@ -1,4 +1,4 @@
-function [audio_stft] = my_stft(audio, fs, window_length, overlap, nfft)
+function [audio_stft] = my_STFT(audio, fs, window_length, overlap, nfft)
 
     % Initialize output variables
     audio_stft = zeros(nfft/2+1, floor((length(audio)-window_length)/(window_length-overlap)) + 1);
