@@ -4,8 +4,8 @@ clearvars
 
 [audio, fs] = audioread('array_recordings.wav');
 
-% Normalizza l'audio per avere i volumi uguali dividendo per il massimo
-% valore assoluto
+% Normalise the audio to have equal volumes by dividing by the maximum
+% absolute value
 audio = audio / max(abs(audio(:)));
 
 theta_range = -90:90;
@@ -15,24 +15,15 @@ c = 343; % speed of sound in m/s
 
 
 omega_max = ( pi * c ) / d;
-freq_max = min(fs/2, omega_max/(2*pi)); %scelgo la frequenza per cui non si crea aliasing
+freq_max = min(fs/2, omega_max/(2*pi)); % choose the frequency for which no aliasing is created
 
-% block for STFT
+% compute STFT for the multichannel audio file
 window_length = 1024;
 overlap = 512;
 nfft = 1024;
-%[audio_stft, frequencies, times] = my_STFT(audio, fs, window_length, overlap, nfft);
+[audio_stft, frequencies, times] = multichannel_stft(audio, fs, window_length, overlap, nfft);
 
-% audio_stft = zeros(0, 0, num_mics);
-% for channel = 1:num_mics
-%     % extract audio channel
-%     audio_channel = audio(:, channel);
-%     [stft_temp, frequencies, times] = stft(audio_channel, fs, Window= hann(window_length),OverlapLength= overlap, FFTLength=nfft,FrequencyRange="onesided");
-% end
-
-[audio_stft, frequencies, times] = stft(audio, fs, Window= hann(window_length),OverlapLength= overlap, FFTLength=nfft,FrequencyRange="onesided");
-
-% audio_length = size(audio, 1);
+% compute pseudo-spectrum
 p = compute_pseudospectrum(frequencies, num_mics, d, c, times, audio_stft, theta_range);
 
 % compute DOAs

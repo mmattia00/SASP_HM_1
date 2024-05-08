@@ -23,7 +23,7 @@ p = zeros(length(theta_range), length(frequencies), length(times));
         end
     end
     
-    p = mean(p, 2); % averaging among the frequencies
+    p = geomean(abs(p), 2); % averaging among the frequencies
     p = squeeze(p); % removing the frequency dimension (we want only time on x-axis and theta on y-axis)
 end
 
