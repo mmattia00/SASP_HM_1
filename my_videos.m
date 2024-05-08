@@ -6,7 +6,7 @@ function my_videos(DOAs)
     y = zeros(size(x)); % Y-coordinate is zero to keep the line straight
     
     % Initialize the video
-    video = VideoWriter('arrow_animation.avi', 'Motion JPEG AVI');
+    video = VideoWriter('DOAs_estimation.avi', 'Motion JPEG AVI');
     open(video);
     
     % Draw the first frame
@@ -30,8 +30,8 @@ function my_videos(DOAs)
     angles = deg2rad(DOAs + 90);
     for i = 1:length(angles)
         % Calculate the new x and y components of the arrow using the current angle
-        dx = 5*cos(angles(i));
-        dy = 5*sin(angles(i));
+        dx = 10*cos(angles(i));
+        dy = 10*sin(angles(i));
         
         % Update the arrow in the plot
         set(arrow, 'UData', dx, 'VData', dy);
