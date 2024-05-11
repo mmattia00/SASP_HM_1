@@ -10,8 +10,8 @@ function my_plots(DOAs, p, times)
     figure;
     plot(DOAs);
     title('DOAS at different time instants');
-    xlabel('time instants');
-    ylabel('degrees');
+    xlabel('time (in samples)');
+    ylabel('angles (in degrees)');
     
     
     % plotting averaged pseudospectrum at different time instants
@@ -20,8 +20,8 @@ function my_plots(DOAs, p, times)
     y_values = linspace(-90, 90, size(p, 1));
     imagesc(x_values, y_values, abs(p));
     title('Averaged pseudospectrum at different time instants');
-    xlabel('time instants');
-    ylabel('degrees');
+    xlabel('time (in samples)');
+    ylabel('angles (in degree)');
     axis xy;
     
     
