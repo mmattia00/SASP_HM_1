@@ -1,3 +1,4 @@
+## SASP_HM_1
 For this homework assignment it will be explored the topic of acoustic source localization.
 It will be provided a multichannel recording acquired using a uniform linear microphone array (ULA). 
 The device known as EStick, is composed of 𝑀 = 16 MEMS microphones and it has a total length of 𝐿 = 45[cm].
